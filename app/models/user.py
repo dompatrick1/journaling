@@ -14,6 +14,8 @@ class User(db.Model, UserMixin):
     image = db.Column(db.String(300), unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
+    entries = db.relationship('Entry', backref='users')
+
     @property
     def password(self):
         return self.hashed_password
