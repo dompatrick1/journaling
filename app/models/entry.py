@@ -12,6 +12,7 @@ class Entry(db.Model):
     userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
 
     comments = db.relationship('Comment', backref='entries')
+    likes = db.relationship('Like', backref='entries')
 
     def to_dict(self):
         return {
